@@ -13,9 +13,9 @@ def post_request(url: str, param: dict, cook={},
     return my_request(url, param, cook, 'post', print_resp, print_param)
 
 
-def my_request(url: str, param: dict, cook={}, method='get',
-                print_resp=False, print_param=True) -> str:
-    if method != 'get' or method != 'post':
+def my_request(url: str, param: dict, cook: dict, method: str,
+                print_resp: bool, print_param: bool) -> str:
+    if method != 'get' and method != 'post':
         print('method is not recognized')
         exit(1)
     if print_param:
