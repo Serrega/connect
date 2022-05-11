@@ -9,17 +9,17 @@ def get_request(url: str, param: dict, cook={},
 
 
 def post_request(url: str, param: dict, cook={},
-                print_resp=False, print_param=True) -> str:
+                 print_resp=False, print_param=True) -> str:
     return my_request(url, param, cook, 'post', print_resp, print_param)
 
 
 def my_request(url: str, param: dict, cook: dict, method: str,
-                print_resp: bool, print_param: bool) -> str:
+               print_resp: bool, print_param: bool) -> str:
     if method != 'get' and method != 'post':
         print('method is not recognized')
         exit(1)
     if print_param:
-        print(*[n[0]+'='+n[1] for n in sorted(param.items())])
+        print(*[n[0] + '=' + n[1] for n in sorted(param.items())])
     try:
         response = (requests.get(url, params=param, cookies=cook)
                     if method == 'get' else
