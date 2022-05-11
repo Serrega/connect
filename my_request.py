@@ -19,7 +19,7 @@ def my_request(url: str, param: dict, cook: dict, method: str,
         print('method is not recognized')
         exit(1)
     if print_param:
-        print(*[n[0] + '=' + n[1] for n in sorted(param.items())])
+        print(*[n[0] + '=' + n[1] for n in sorted(param.items())], sep='\n')
     try:
         response = (requests.get(url, params=param, cookies=cook)
                     if method == 'get' else
