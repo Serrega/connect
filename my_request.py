@@ -3,8 +3,21 @@ from requests.exceptions import HTTPError
 import urllib3
 
 
+def get_request(url: str, param: dict, cook={},
+                print_resp=False, print_param=True) -> str:
+    return my_request(url, param, cook, 'get', print_resp, print_param)
+
+
+def post_request(url: str, param: dict, cook={},
+                print_resp=False, print_param=True) -> str:
+    return my_request(url, param, cook, 'post', print_resp, print_param)
+
+
 def my_request(url: str, param: dict, cook={}, method='get',
                 print_resp=False, print_param=True) -> str:
+    if method != 'get' or method != 'post':
+        print('method is not recognized')
+        exit(1)
     if print_param:
         print(*[n[0]+'='+n[1] for n in sorted(param.items())])
     try:
